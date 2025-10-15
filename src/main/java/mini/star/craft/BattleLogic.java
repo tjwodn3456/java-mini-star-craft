@@ -49,7 +49,7 @@ public class BattleLogic {
     }
     // 전투 후 체력 계산
     public double remainHp(double damage, Unit unit){
-        return unitData.getUnitMap().get(unit).hp - damage;
+        return unit.hp - damage;
     }
 
     // 현재 체력 상황

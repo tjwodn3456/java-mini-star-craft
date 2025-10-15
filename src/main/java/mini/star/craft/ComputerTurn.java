@@ -18,16 +18,8 @@ public class ComputerTurn {
     public void battle(Race computerRace) {
         List<Unit> computerList = unitData.getTeamList(computerRace, unitData.getUnitMap());
         List<Unit> playerList = unitData.getEnemyList(computerRace, unitData.getUnitMap());
-        Unit computerUnit;
-        while (true) {
-            int randomNum = (int) (Math.random() * 10) + 1;
-            if (computerList.get(randomNum) == null) {
-                continue;
-            } else {
-                computerUnit = computerList.get(randomNum);
-                break;
-            }
-        }
+        int randomNum = (int) (Math.random() * computerList.size());
+        Unit computerUnit = computerList.get(randomNum);
         Unit computerTargetUnit = computerLogic.selectObject(playerList);
         double damage = battleLogic.attack(computerUnit, computerTargetUnit);
         double remainHp = battleLogic.remainHp(damage, computerTargetUnit);

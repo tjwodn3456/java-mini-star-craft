@@ -27,7 +27,7 @@ public class Zerggling extends Zerg {
 
     @Override
     void setAttackPower() {
-        super.attackPower = 8;
+        super.attackPower = 28;
     }
 
     @Override

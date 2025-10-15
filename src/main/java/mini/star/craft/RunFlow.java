@@ -33,11 +33,20 @@ public class RunFlow {
         computerRace = computerSetting.setComputer(playerRace);
 
         while (true) {
-            Unit playerSelectUnit = selectMyUnit.select(playerRace);
-            Unit targetUnit = selectTargetUnit.whatTodo(playerSelectUnit);
-            battleAttack.battle(playerSelectUnit, targetUnit);
-            computerTurn.battle(computerRace);
             Race winnerPlayer = winnerCheck.isWinnerPlayer(playerRace, computerRace);
+            Unit playerSelectUnit = selectMyUnit.select(playerRace);
+            if (playerSelectUnit == null) {
+                print.printNoUnit();
+                continue;
+            }
+            Unit targetUnit = selectTargetUnit.action(playerSelectUnit, playerRace);
+            if (targetUnit == null) {
+                print.printNoUnit();
+                continue;
+            }
+            battleAttack.battle(playerSelectUnit, targetUnit);
+            if (winnerPlayer != null) { break;}
+            computerTurn.battle(computerRace);
             if (winnerPlayer != null) { break;}
         }
     }

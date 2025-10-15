@@ -24,7 +24,7 @@ public class Marin extends Terran {
     public void setHp() {super.hp = 100;}
 
     @Override
-    void setAttackPower() {super.attackPower = 10;}
+    void setAttackPower() {super.attackPower = 30;}
 
     @Override
     void setDefencePower() {super.defencePower = 5;}

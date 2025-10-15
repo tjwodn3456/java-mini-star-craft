@@ -16,10 +16,10 @@ public class WinnerCheck {
         Map<Integer, Unit> unitMap = unitData.getUnitMap();
         List<Unit> playerList = unitData.getTeamList(playerRace, unitMap);
         List<Unit> compuerList = unitData.getTeamList(computerRace, unitMap);
-        if (playerList == null) {
+        if (playerList.isEmpty()) {
             print.printLose();
             return computerRace;
-        } else if (compuerList == null) {
+        } else if (compuerList.isEmpty()) {
             print.printWin();
             return playerRace;
         } else{

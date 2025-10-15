@@ -10,8 +10,9 @@ public class ComputerSetting {
     public Race setComputer(Race playerRace){
         Race computerRace = computerLogic.selectComputerRace(playerRace);
         int unitCount = 0;
-        while (unitCount > 3) {
+        while (unitCount < 3) {
             computerLogic.selectComputerUnit(computerRace);
+            unitCount++;
         }
         return computerRace;
     }
