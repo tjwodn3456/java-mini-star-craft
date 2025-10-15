@@ -34,6 +34,7 @@ public class ComputerLogic {
             int randomIndex = random.nextInt(numberOfUnits);
             TerranUnitName randomUnit = allUnits[randomIndex];
             unitData.saveUnit(factory.creatUnit(randomUnit));
+
         } else if (computerRace.equals(Race.ZERG)) {
             ZergUnitName[] allUnits = ZergUnitName.values();
             int numberOfUnits = allUnits.length;
@@ -53,17 +54,17 @@ public class ComputerLogic {
     }
 
     // 체력 낮은 순 정렬 로직
-    public List<Unit> sortLowerHp() {
+    public List<Unit> sortLowerHp(Race computerRace) {
         Comparator<Unit> comparator = new Comparator<Unit>() {
             @Override
             public int compare(Unit o1, Unit o2) {
                 if (o1.hp == o2.hp) {
-                    return (int) (o1.defencePower - o2.defencePower);
+                    return Double.compare(o1.defencePower, o2.defencePower);
                 }
-                return (int) (o1.hp - o2.hp);
+                return Double.compare(o1.hp , o2.hp);
             }
         };
-        List<Unit> list = new ArrayList<>(unitData.getUnitMap().values());
+        List<Unit> list = new ArrayList<>(unitData.getEnemyList(computerRace, unitData.getUnitMap()));
         Collections.sort(list, comparator);
         return list;
     }

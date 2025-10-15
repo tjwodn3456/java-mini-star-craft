@@ -7,6 +7,7 @@ public class Zerggling extends Zerg {
         setHp();
         setAttackPower();
         setDefencePower();
+        setSkillCount();
         setCanFly();
     }
 
@@ -53,11 +54,11 @@ public class Zerggling extends Zerg {
 
     @Override
     void setName() {
-
+        super.name = "Zerggling";
     }
 
     @Override
     public String toString() {
-        return "ID: Zerggling " + id + " HP: " + hp + " ATK: " + attackPower + " DEF: " + defencePower;
+        return "ID: " + id + " HP: " + hp + " ATK: " + attackPower + " DEF: " + defencePower;
     }
 }

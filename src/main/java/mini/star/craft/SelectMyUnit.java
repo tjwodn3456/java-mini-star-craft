@@ -38,7 +38,7 @@ public class SelectMyUnit implements Battle{
                 Unit selectUnit = unitData.findUnitById(unitId);
                 return selectUnit;
             } else {
-                print.printNoUnit();
+                print.printNoUnitId();
                 return null;
             }
         } catch (InputMismatchException e ) {

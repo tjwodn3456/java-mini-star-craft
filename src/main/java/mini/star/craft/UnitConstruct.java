@@ -17,7 +17,12 @@ public class UnitConstruct {
         if (playerRace == Race.TERRAN) {
             int unitCount = 0;
             while (unitCount < 3) {
-                TerranUnitName selectUnit = TerranUnitName.fromString(print.askSelectUnitTerran());
+                String input = print.askSelectUnitTerran();
+                TerranUnitName selectUnit = TerranUnitName.fromString(input);
+                if (selectUnit == null) {
+                    print.printIncorrectUnit(input);
+                    continue;
+                }
                 unitData.saveUnit(factory.creatUnit(selectUnit));
                 unitCount++;
             }
@@ -25,7 +30,12 @@ public class UnitConstruct {
         else if (playerRace == Race.ZERG) {
             int unitCount = 0;
             while (unitCount < 3) {
-                ZergUnitName selectUnit = ZergUnitName.fromString(print.askSelectUnitZerg());
+                String input = print.askSelectUnitZerg();
+                ZergUnitName selectUnit = ZergUnitName.fromString(input);
+                if (selectUnit == null) {
+                    print.printIncorrectUnit(input);
+                    continue;
+                }
                 unitData.saveUnit(factory.creatUnit(selectUnit));
                 unitCount++;
             }

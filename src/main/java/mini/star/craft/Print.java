@@ -15,7 +15,7 @@ public class Print {
 
     }
     public String askSelectSpecies(){
-        System.out.println(" 1. Terran  |  2. Zerg  |");
+        System.out.println(" | Terran  |   Zerg  |");
         System.out.println("종족을 선택하세요: ");
         return scanner.nextLine();
     }
@@ -58,13 +58,16 @@ public class Print {
         System.out.println("명령을 내릴 유닛을 선택하세요: ");
         return scanner.nextInt();
     }
-    public void printNoUnit(){
+    public void printNoUnitId(){
         System.out.println("존재하지 않는 유닛 id 아닙니다. 다시 선택 하세요.");
     }
     public void printMustIntegerInput(){
         System.out.println("유닛 id로 숫자만 입력하세요.");
     }
 
+    public void printIncorrectUnit(String input){
+        System.out.println("< " + input + " > 은 올바르지 않은 Unit 이름 입니다. 다시 입력하세요.");
+    }
 
 
     public void askAttackTarget(){
@@ -97,8 +100,9 @@ public class Print {
     public void printDeadUnit(Unit unit){
         System.out.println(unit + " 이 사망했습니다.");
     }
-
-
+    public void printNoTeamkill(){
+        System.out.println("아군을 공격할 순 없습니다.");
+    }
 
     public void printWin(){
         System.out.println("당신의 승리 입니다! 축하 드립니다!");

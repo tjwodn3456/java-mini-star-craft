@@ -8,6 +8,7 @@ public class Marin extends Terran {
         setHp();
         setAttackPower();
         setDefencePower();
+        setSkillCount();
         setCanFly();
     }
 

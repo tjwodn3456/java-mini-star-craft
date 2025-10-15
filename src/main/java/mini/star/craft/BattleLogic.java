@@ -21,18 +21,6 @@ public class BattleLogic {
         }
     }
 
-    // 방어
-    public double defence(Unit unitATK, Unit unitDEF) {
-        double damage;
-        if ((unitDEF.canFly) && !(unitATK.canFly)) {
-            return damage = 0;
-        } else if (unitATK.attackPower > unitDEF.defencePower) {
-            damage = unitATK.attackPower - unitDEF.defencePower * 2;
-            return damage;
-        } else {
-            return damage = 0;
-        }
-    }
 
     // Skill 공격
     public double skillAttack(Unit unitATK, Unit unitDEF){
@@ -72,7 +60,7 @@ public class BattleLogic {
 
     // 유닛 hp 사망 여부
     public boolean isDeadHp(double remainHp){
-        return remainHp < 0;
+        return remainHp <= 0;
     }
 
     // 유닛 사망, 리스트에서 제거

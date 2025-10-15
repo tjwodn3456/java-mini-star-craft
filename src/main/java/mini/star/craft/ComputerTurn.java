@@ -17,7 +17,7 @@ public class ComputerTurn {
 
     public void battle(Race computerRace) {
         List<Unit> computerList = unitData.getTeamList(computerRace, unitData.getUnitMap());
-        List<Unit> playerList = unitData.getEnemyList(computerRace, unitData.getUnitMap());
+        List<Unit> playerList = computerLogic.sortLowerHp(computerRace);
         int randomNum = (int) (Math.random() * computerList.size());
         Unit computerUnit = computerList.get(randomNum);
         Unit computerTargetUnit = computerLogic.selectObject(playerList);

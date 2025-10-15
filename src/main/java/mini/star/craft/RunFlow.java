@@ -36,12 +36,12 @@ public class RunFlow {
             Race winnerPlayer = winnerCheck.isWinnerPlayer(playerRace, computerRace);
             Unit playerSelectUnit = selectMyUnit.select(playerRace);
             if (playerSelectUnit == null) {
-                print.printNoUnit();
+                print.printNoUnitId();
                 continue;
             }
             Unit targetUnit = selectTargetUnit.action(playerSelectUnit, playerRace);
             if (targetUnit == null) {
-                print.printNoUnit();
+                print.printNoUnitId();
                 continue;
             }
             battleAttack.battle(playerSelectUnit, targetUnit);
