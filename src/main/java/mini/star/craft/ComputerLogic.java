@@ -5,6 +5,7 @@ import java.util.*;
 public class ComputerLogic {
     private final UnitData unitData;
     private Factory factory = Factory.getFactory();
+    private final Random random = new Random();
 
     public ComputerLogic(UnitData unitData) {
         this.unitData = unitData;
@@ -14,7 +15,6 @@ public class ComputerLogic {
     // 랜덤 종족 선택
     public Race selectComputerRace(Race playerRace) {
         while (true) {
-            Random random = new Random();
             Race[] allRaces = Race.values();
             int numberOfRaces = allRaces.length;
             int randomIndex = random.nextInt(numberOfRaces);
@@ -27,7 +27,6 @@ public class ComputerLogic {
 
     // 랜덤 유닛 선택 후 생성
     public void selectComputerUnit(Race computerRace) {
-        Random random = new Random();
         if (computerRace.equals(Race.TERRAN)) {
             TerranUnitName[] allUnits = TerranUnitName.values();
             int numberOfUnits = allUnits.length;

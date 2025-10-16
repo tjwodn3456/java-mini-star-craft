@@ -24,9 +24,10 @@ public class BattleAttack implements Battle {
 
     @Override
     public void battle(Unit attackUnit, Unit targetUnit) {
+        double initialHp = targetUnit.hp;
         double damage = battleLogic.attack(attackUnit, targetUnit);
         double remainHp = battleLogic.remainHp(damage, targetUnit);
-        print.printBattle(attackUnit, targetUnit, damage, remainHp);
+        print.printBattle(attackUnit, targetUnit, damage, remainHp, initialHp);
         if (battleLogic.battleResultSave(remainHp, targetUnit) != null) {
             print.printDeadUnit(targetUnit);
         }

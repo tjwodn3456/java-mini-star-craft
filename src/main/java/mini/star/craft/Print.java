@@ -27,7 +27,7 @@ public class Print {
         System.out.print("  Marin |  Firebat : ");
     }
     public void askSelectUnitZerg(){
-        System.out.println("  Zerggling |  Hydra : ");
+        System.out.print("  Zerggling |  Hydra : ");
     }
     public void printLimitQuantity(){
         System.out.println("인구 수는 10을 초과 할 수 없습니다.");
@@ -49,10 +49,10 @@ public class Print {
         System.out.println(unit.toString());
     }
     public void printItsYourTurn(){
-        System.out.println("=============== Player Turn!!! ==============");
+        System.out.println("<<<<<<<<<<<<<<<<< Player Turn!!! >>>>>>>>>>>>>>>>>>>");
     }
     public void printItsComputerTurn(){
-        System.out.println("========== Computer Turn!!! ===========");
+        System.out.println("<<<<<<<<<<<<<<<<< Computer Turn!!! >>>>>>>>>>>>>>>>>>>");
     }
 
     public void askTargetUnitById(){
@@ -91,14 +91,14 @@ public class Print {
         System.out.println(" 1. 일반 공격 | 2. Skill 사용");
         System.out.println("어떤 공격을 실행할지 입력하세요: ");
     }
-    public void printBattle(Unit attackUnit, Unit targetUnit, Double damage, Double remainHp){
-        System.out.println(attackUnit + " 이 " + targetUnit + " 에게 " + damage + " 만큼 데미지를 가했습니다.");
-        System.out.println(targetUnit+" 의 남은 체력: "+remainHp);
+
+    public void printBattle(Unit attackUnit, Unit targetUnit, Double damage, Double remainHp, Double initialHP) {
+        System.out.println("==================================Battle Result=======================================");
+        System.out.println("ID: " + attackUnit.id + " " + attackUnit.name + " 이 " + "ID: " + targetUnit.id + " " + targetUnit.name + " 에게 " + damage + " 만큼 데미지를 가했습니다.");
+        System.out.println("ID: " + targetUnit.id + " " + targetUnit.name + " HP: " + initialHP + " -> " + remainHp);
+        System.out.println("=======================================================================================");
     }
-    public void printEnemyDamage(Double damage, Double remainHp){
-        System.out.println(damage + " 만큼 데미지를 받았습니다.");
-        System.out.println("내 유닛 남은 체력: "+remainHp);
-    }
+
     public void printMiss(){
         System.out.println("빗나갔습니다! 지상 유닛은 공중 유닛을 공격할수 없습니다!");
     }

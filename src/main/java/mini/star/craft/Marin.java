@@ -2,39 +2,12 @@ package mini.star.craft;
 
 public class Marin extends Terran {
 
-    public Marin(int id){
-        setId(id);
-        setName();
-        setHp();
-        setAttackPower();
-        setDefencePower();
-        setSkillCount();
-        setCanFly();
+    public Marin(int id) {
+        super(id, "Marin", 100, 30, 5, 4, false);
     }
 
-
     @Override
-    void setId(int num) {super.id = num;}
-
-    @Override
-    void setName() {super.name="Marin";}
-
-    @Override
-    public void setHp() {super.hp = 100;}
-
-    @Override
-    void setAttackPower() {super.attackPower = 30;}
-
-    @Override
-    void setDefencePower() {super.defencePower = 5;}
-
-    @Override
-    double skill() {return attackPower * 4;}
-
-    @Override
-    void setSkillCount() {super.skillCount=4;}
-
-    @Override
-    void setCanFly() {super.canFly = false;}
-
+    double skill() {
+        return 0;
+    }
 }
