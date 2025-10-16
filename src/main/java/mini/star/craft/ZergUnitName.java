@@ -6,7 +6,14 @@ public enum ZergUnitName {
         public Unit create(int id) {
             return new Zerggling(id);
         }
+    },
+    HYDRA {
+        @Override
+        public Unit create(int id) {
+            return new Hydra(id);
+        }
     };
+
     public abstract Unit create(int id);
 
     public static ZergUnitName fromString(String input) {

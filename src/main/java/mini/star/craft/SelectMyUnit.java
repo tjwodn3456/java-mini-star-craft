@@ -3,15 +3,14 @@ package mini.star.craft;
 import java.util.InputMismatchException;
 import java.util.List;
 
-public class SelectMyUnit implements Battle{
+public class SelectMyUnit {
     private final Print print;
     private final UnitData unitData;
-    private final BattleLogic battleLogic;
-
-    public SelectMyUnit(Print print, UnitData unitData, BattleLogic battleLogic) {
+    private final InputReader inputReader;
+    public SelectMyUnit(Print print, UnitData unitData, InputReader inputReader) {
         this.print = print;
         this.unitData = unitData;
-        this.battleLogic = battleLogic;
+        this.inputReader = inputReader;
     }
 
     /* TODO
@@ -25,31 +24,27 @@ public class SelectMyUnit implements Battle{
         V 그것을 그대로 반환 하는데
      */
     public Unit select(Race playerRace) {
-        print.printItsYourTurn();
-        List<Unit> teamList = unitData.getTeamList(playerRace, unitData.getUnitMap());
-        for (Unit unit : teamList) {
-          print.printUnitStatus(unit);
-        }
-        int unitId;
-        try {
-            unitId = print.askSelctUnit();
-            print.bufferScanner();
+        while (true) {
+            print.printItsYourTurn();
+            List<Unit> teamList = unitData.getTeamList(playerRace, unitData.getUnitMap());
+            for (Unit unit : teamList) {
+                print.printUnitStatus(unit);
+            }
+            int unitId;
+            print.askSelectUnitById();
+            unitId = inputReader.getValidIntegerInput();
             if (unitData.isExistUnit(unitId)) {
                 Unit selectUnit = unitData.findUnitById(unitId);
+                if (selectUnit.getRace() != playerRace) {
+                    print.doNotSelectEnemy();
+                    continue;
+                }
+                print.printYourSelectUnit(selectUnit);
                 return selectUnit;
             } else {
                 print.printNoUnitId();
-                return null;
             }
-        } catch (InputMismatchException e ) {
-            print.printMustIntegerInput();
-            print.bufferScanner();
-            return null;
         }
     }
-
-    @Override
-    public void battle(Unit myUnit, Unit targetUnit) {
-    }
-
 }
+

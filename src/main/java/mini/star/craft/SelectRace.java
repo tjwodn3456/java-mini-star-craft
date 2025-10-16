@@ -4,19 +4,28 @@ import java.util.InputMismatchException;
 
 public class SelectRace {
     private final Print print;
+    private final InputReader inputReader;
 
-    public SelectRace(Print print) {
+    public SelectRace(Print print, InputReader inputReader) {
         this.print = print;
+        this.inputReader = inputReader;
     }
 
     public Race select() {
-        try {
-            Race playerRace = Race.fromString(print.askSelectSpecies()); // 종족 선택값이 더 외부에 있어야한다.
-            return playerRace;
-        } catch (InputMismatchException e) {
-            System.out.println("잘못된 입력 값 입니다. 다시 입력하세요.");
+        while (true) {
+            print.askSelectRace();
+            String userInput = inputReader.getValidStringInput();
+            if (inputReader.isNumeric(userInput)) {
+                print.raceMustStringInput();
+            } else {
+                Race playerRace = Race.fromString(userInput);
+                if (playerRace != null) {
+                    return playerRace;
+                } else {
+                    print.IncorrectRaceInput(userInput);
+                }
+            }
         }
-        return null;
     }
-
 }
+

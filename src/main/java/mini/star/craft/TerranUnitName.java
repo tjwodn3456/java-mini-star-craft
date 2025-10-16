@@ -6,8 +6,13 @@ public enum TerranUnitName {
         public Unit create(int id) {
             return new Marin(id);
         }
+    },
+    FIREBAT {
+        @Override
+        public Unit create(int id) {
+            return new Firebat(id);
+        }
     };
-
     public abstract Unit create(int id);
 
 

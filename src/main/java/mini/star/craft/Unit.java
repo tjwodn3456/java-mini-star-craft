@@ -24,6 +24,6 @@ public abstract class Unit {
 
     @Override
     public String toString() {
-        return " [ " + name + id + " HP: " + hp + " ATK: " + attackPower + " DEF: " + defencePower;
+        return "< ID: " + id +" > [ Name: "+ name +" | HP: " + hp + " | ATK: " + attackPower + " | DEF: " + defencePower+" ]";
     }
 }

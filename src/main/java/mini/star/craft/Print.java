@@ -1,74 +1,79 @@
 package mini.star.craft;
 
-import java.util.Scanner;
 
 public class Print {
-    Scanner scanner = new Scanner(System.in);
 
 
     public void printStart(){
-        System.out.println("========================================================");
-        System.out.println("               Mini-StarCraft-Project!                  ");
-        System.out.println("========================================================");
+        System.out.println("===============================================================");
+        System.out.println("                      Mini-StarCraft-Project!                  ");
+        System.out.println("===============================================================");
     }
-    public void printMenu(){
 
-    }
-    public String askSelectSpecies(){
+    public void askSelectRace(){
         System.out.println(" | Terran  |   Zerg  |");
-        System.out.println("종족을 선택하세요: ");
-        return scanner.nextLine();
+        System.out.print("선택할 종족을 문자로 입력하세요: ");
+    }
+    public void IncorrectRaceInput(String input){
+        System.out.println("< " + input + " > 은 존재하지 않는 종족 입니다. 다시 입력하세요.");
+    }
+    public void raceMustStringInput() {
+        System.out.println("종족 선택은 문자열만 입력할 수 있습니다.");
     }
     public void printConstructUnit(){
         System.out.println("당신의 전투 진행을 함께할 유닛을 생성하세요.");
     }
-    public String askSelectUnitTerran(){
-        System.out.print("  Marin |  Wraith : ");
-        return scanner.nextLine();
+    public void askSelectUnitTerran(){
+        System.out.print("  Marin |  Firebat : ");
     }
-    public String askSelectUnitZerg(){
-        System.out.println("  Zerggling |  Mutalisk : ");
-        return scanner.nextLine();
+    public void askSelectUnitZerg(){
+        System.out.println("  Zerggling |  Hydra : ");
     }
     public void printLimitQuantity(){
         System.out.println("인구 수는 10을 초과 할 수 없습니다.");
     }
     public void askQuantityUnit(String unit){
         System.out.println(" "+unit + " 을 얼만큼 생산하시겠습니까?");
-        scanner.nextInt();
     }
-    public void printYourSelectUnit(){
-        System.out.println("==당신이 선택한 유닛==");
+    public void printYourSelectUnit(Unit unit){
+        System.out.println("========================당신이 선택한 유닛========================");
+        System.out.println(unit.toString());
+        System.out.println("===============================================================");
+        System.out.println();
+    }
+    public void doNotSelectEnemy(){
+        System.out.println("적군 유닛을 선택하셨습니다.아군 유닛만 선택할 수 있습니다.");
     }
 
     public void printUnitStatus(Unit unit) {
         System.out.println(unit.toString());
     }
     public void printItsYourTurn(){
-        System.out.println("==== Player Turn!!! ====");
+        System.out.println("=============== Player Turn!!! ==============");
     }
     public void printItsComputerTurn(){
-        System.out.println("==== Computer Turn!!! ====");
+        System.out.println("========== Computer Turn!!! ===========");
     }
-    public int askTodo(){
-        System.out.print("공격할 대상을 선택하세요: ");
-        return scanner.nextInt();
+
+    public void askTargetUnitById(){
+        System.out.print("공격할 대상 Unit의 Id를 입력하세요: ");
     }
-    public int askSelctUnit(){
-        System.out.println("명령을 내릴 유닛을 선택하세요: ");
-        return scanner.nextInt();
-    }
-    public void printNoUnitId(){
-        System.out.println("존재하지 않는 유닛 id 아닙니다. 다시 선택 하세요.");
+    public void askSelectUnitById(){
+        System.out.print("명령을 내릴 Unit ID를 입력하세요: ");
     }
     public void printMustIntegerInput(){
         System.out.println("유닛 id로 숫자만 입력하세요.");
     }
-
-    public void printIncorrectUnit(String input){
-        System.out.println("< " + input + " > 은 올바르지 않은 Unit 이름 입니다. 다시 입력하세요.");
+    public void printNoUnitId(){
+        System.out.println("존재하지 않는 유닛 id 아닙니다. 다시 선택 하세요.");
     }
 
+    public void IncorrectUnitInput(String input){
+        System.out.println("< " + input + " > 은 올바르지 않은 Unit 이름 입니다. 다시 입력하세요.");
+    }
+    public void unitConstructMustStringInput() {
+        System.out.println("유닛 생성은 문자열만 입력할 수 있습니다.");
+    }
 
     public void askAttackTarget(){
         System.out.println(" 공격할 대상을 선택하세요!!! ");
@@ -109,10 +114,5 @@ public class Print {
     }
     public void printLose(){
         System.out.println("당신의 패배 입니다! 더 실력을 키워 오세요.");
-    }
-
-
-    public void bufferScanner(){
-        scanner.nextLine();
     }
 }

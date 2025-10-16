@@ -4,38 +4,34 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 public class SelectTargetUnit {
-    private Print print;
-    private UnitData unitData;
+    private final Print print;
+    private final UnitData unitData;
+    private final InputReader inputReader;
 
-    public SelectTargetUnit(Print print, UnitData unitData) {
+    public SelectTargetUnit(Print print, UnitData unitData, InputReader inputReader) {
         this.print = print;
         this.unitData = unitData;
+        this.inputReader = inputReader;
     }
 
     public Unit action(Unit selectUnit, Race playerRace) {
-        List<Unit> enemyList = unitData.getEnemyList(playerRace, unitData.getUnitMap());
-        print.printYourSelectUnit();
-        print.printUnitStatus(selectUnit);
-        for (Unit unit : enemyList) {
-            print.printUnitStatus(unit);
-        }
-        try {
-            int targetId = print.askTodo();
-            print.bufferScanner();
-            Unit targetUnit = unitData.findUnitById(targetId);
-            if (targetUnit.getRace() == selectUnit.getRace()) {
-                print.printNoTeamkill();
-                return null;
+        while (true) {
+            List<Unit> enemyList = unitData.getEnemyList(playerRace, unitData.getUnitMap());
+            for (Unit unit : enemyList) {
+                print.printUnitStatus(unit);
             }
+            print.askTargetUnitById();
+            int targetId = inputReader.getValidIntegerInput();
+            Unit targetUnit = unitData.findUnitById(targetId);
             if (!unitData.isExistUnit(targetId)) {
                 print.printNoUnitId();
-                return null;
+                continue;
+            } else if (targetUnit.getRace() == selectUnit.getRace()) {
+                print.printNoTeamkill();
+                continue;
             }
             return targetUnit;
-        } catch (InputMismatchException e) {
-            print.printMustIntegerInput();
-            print.bufferScanner();
-            return null;
         }
     }
 }
+

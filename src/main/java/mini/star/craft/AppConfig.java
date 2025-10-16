@@ -15,6 +15,7 @@ public class AppConfig {
     private SelectTargetUnit selectTargetUnit;
     private SelectMyUnit selectMyUnit;
     private RunFlow runFlow;
+    private InputReader inputReader;
 
     public UnitData unitData() {
         if (unitData == null) {
@@ -28,6 +29,13 @@ public class AppConfig {
             print = new Print();
         }
         return print;
+    }
+
+    public InputReader inputReader() {
+        if (inputReader == null) {
+            inputReader = new InputReader(print());
+        }
+        return inputReader;
     }
 
     public BattleLogic battleLogic() {
@@ -46,7 +54,7 @@ public class AppConfig {
 
     public UnitConstruct unitConstruct() {
         if (unitConstruct == null) {
-            unitConstruct = new UnitConstruct(unitData(), print());
+            unitConstruct = new UnitConstruct(unitData(), print(), inputReader());
         }
         return unitConstruct;
     }
@@ -67,7 +75,7 @@ public class AppConfig {
 
     public SelectRace selectRace() {
         if (selectRace == null) {
-            selectRace = new SelectRace(print());
+            selectRace = new SelectRace(print(), inputReader());
         }
         return selectRace;
     }
@@ -88,14 +96,14 @@ public class AppConfig {
 
     public SelectTargetUnit selectTargetUnit() {
         if (selectTargetUnit == null) {
-            selectTargetUnit = new SelectTargetUnit(print(), unitData());
+            selectTargetUnit = new SelectTargetUnit(print(), unitData(), inputReader());
         }
         return selectTargetUnit;
     }
 
     public SelectMyUnit selectMyUnit() {
         if (selectMyUnit == null) {
-            selectMyUnit = new SelectMyUnit(print(), unitData(), battleLogic());
+            selectMyUnit = new SelectMyUnit(print(), unitData(), inputReader());
         }
         return selectMyUnit;
     }

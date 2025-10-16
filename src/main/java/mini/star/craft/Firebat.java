@@ -1,8 +1,8 @@
 package mini.star.craft;
 
-public class Marin extends Terran {
+public class Firebat extends Terran {
 
-    public Marin(int id){
+    public Firebat(int id){
         setId(id);
         setName();
         setHp();
@@ -17,16 +17,16 @@ public class Marin extends Terran {
     void setId(int num) {super.id = num;}
 
     @Override
-    void setName() {super.name="Marin";}
+    void setName() {super.name="Firebat";}
 
     @Override
     public void setHp() {super.hp = 100;}
 
     @Override
-    void setAttackPower() {super.attackPower = 30;}
+    void setAttackPower() {super.attackPower = 35;}
 
     @Override
-    void setDefencePower() {super.defencePower = 5;}
+    void setDefencePower() {super.defencePower = 8;}
 
     @Override
     double skill() {return attackPower * 4;}
